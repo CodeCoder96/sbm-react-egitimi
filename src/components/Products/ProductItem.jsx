@@ -1,10 +1,14 @@
+import "./ProductItem.css";
+
 function ProductItem() {
   return (
-    <div className="product-item" style={{
-        border: "1px solid #eee"
-    }}>
+    <div className="product-item">
       <div className="product-image">
-        <img src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg" width={200} alt="product image" />
+        <img
+          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
+          width={200}
+          alt="product image"
+        />
       </div>
       <div className="product-info">
         <strong>Title</strong>
