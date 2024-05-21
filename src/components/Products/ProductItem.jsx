@@ -1,12 +1,14 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
-import "./ProductItem.css";
 import Button from "../UI/Button";
+import "./ProductItem.css";
 
 function ProductItem(props) {
-  const { image, title, desc, price, setTitle } = props;
+  const { image, title: productTitle, desc, price } = props;
+  const [title, setTitle] = useState(productTitle);
 
   function handleTitleChange() {
-    setTitle("Title")
+    setTitle("Title");
   }
 
   return (
@@ -29,7 +31,6 @@ ProductItem.propTypes = {
   title: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   desc: PropTypes.string.isRequired,
-  setTitle: PropTypes.func,
 };
 
 export default ProductItem;
