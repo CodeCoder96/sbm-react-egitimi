@@ -1,0 +1,46 @@
+.btn {
+  border-radius: 28px;
+  display: inline-block;
+  cursor: pointer;
+  font-family: Arial;
+  color: white;
+  font-size: 17px;
+  padding: 10px 20px;
+  text-decoration: none;
+  border: none;
+}
+
+.btn:active {
+  position: relative;
+  top: 1px;
+}
+
+/* size */
+
+.btn-xl {
+  padding: 20px 40px;
+  font-size: 18px;
+}
+
+.btn-lg {
+  padding: 16px 32px;
+  font-size: 16px;
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
+}
+
+/* type */
+.btn-primary {
+  background-color: #0d6efd;
+}
+
+.btn-success {
+  background-color: #157347;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
