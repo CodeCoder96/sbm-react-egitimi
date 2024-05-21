@@ -48,6 +48,16 @@ function AddNewProduct(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const { title, image, description, price } = productData;
+    if (
+      title.trim().length === 0 ||
+      image.trim().length === 0 ||
+      description.trim().length === 0 ||
+      price.trim().length === 0
+    ) {
+      console.error("Inputlar boş olamaz!");
+      return;
+    }
     const newProduct = {
       id: Math.random(),
       ...productData,
