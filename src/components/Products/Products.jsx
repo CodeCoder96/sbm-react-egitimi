@@ -11,6 +11,7 @@ function Products() {
   return (
     <div className="products">
       <ProductItem name={fullName} image={image} title={title} price={price} />
+      <ProductItem name={fullName} image={image} title={title} price={100} />
     </div>
   );
 }
