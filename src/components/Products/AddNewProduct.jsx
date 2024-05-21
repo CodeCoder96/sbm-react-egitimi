@@ -48,13 +48,12 @@ function AddNewProduct(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const { title, image, description, price } = productData;
-    if (
-      title.trim().length === 0 ||
-      image.trim().length === 0 ||
-      description.trim().length === 0 ||
-      price.trim().length === 0
-    ) {
+
+    const isFormValid = Object.values(productData).every(
+      (value) => value.trim() !== ""
+    );
+
+    if (!isFormValid) {
       console.error("Inputlar boş olamaz!");
       return;
     }
