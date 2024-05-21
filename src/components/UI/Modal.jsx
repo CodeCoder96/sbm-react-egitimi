@@ -7,7 +7,7 @@ const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
 
   return (
     <div className="modal d-block">
-      <div className="modal-dialog">
+      <div className="modal-dialog z-3">
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5">{title}</h1>
@@ -36,6 +36,10 @@ const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
           </div>
         </div>
       </div>
+      <div
+        className="modal-overlay w-100 h-100 bg-primary position-absolute top-0 left-0 opacity-25 z-0"
+        onClick={() => setIsShowModal(false)}
+      ></div>
     </div>
   );
 };
