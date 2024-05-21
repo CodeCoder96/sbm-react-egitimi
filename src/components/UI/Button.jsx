@@ -2,7 +2,9 @@ import PropTypes from "prop-types";
 import "./Button.css";
 
 function Button(props) {
-  const classNames = `btn btn-${props.type} btn-${props.size}`;
+  const sizeClass = `btn-${props.size}`;
+  const typeClass = `btn-${props.type}`;
+  const classNames = `btn ${typeClass} ${sizeClass}`;
 
   return <button className={classNames}>click</button>;
 }
