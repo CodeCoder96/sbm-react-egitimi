@@ -1,14 +1,15 @@
 import PropTypes from "prop-types";
 
-const ProductInput = (props) => {
+const ProductInput = ({ input, value, handleChange }) => {
   return (
     <div className="product-input">
-      <label>{props.input.label}</label>
+      <label>{input.label}</label>
       <input
-        type={props.input.type}
-        onChange={props.handleChange}
-        placeholder={props.input.placeholder}
-        name={props.input.name}
+        type={input.type}
+        onChange={handleChange}
+        placeholder={input.placeholder}
+        name={input.name}
+        value={value}
       />
     </div>
   );
@@ -22,6 +23,7 @@ ProductInput.propTypes = {
     name: PropTypes.string,
   }),
   handleChange: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default ProductInput;

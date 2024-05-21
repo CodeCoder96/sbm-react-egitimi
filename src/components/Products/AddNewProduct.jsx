@@ -31,13 +31,15 @@ const productInputs = [
   },
 ];
 
+const initialValues = {
+  title: "",
+  image: "",
+  description: "",
+  price: "",
+};
+
 function AddNewProduct(props) {
-  const [productData, setProductData] = useState({
-    title: "",
-    image: "",
-    description: "",
-    price: "",
-  });
+  const [productData, setProductData] = useState(initialValues);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -51,14 +53,22 @@ function AddNewProduct(props) {
       ...productData,
       price: Number(productData.price),
     };
-    
+
     props.setProducts((products) => [newProduct, ...products]);
+
+    // form verilerini sıfırlama
+    setProductData(initialValues);
   }
 
   return (
     <form className="product-form" onSubmit={handleSubmit}>
       {productInputs.map((input, index) => (
-        <ProductInput key={index} input={input} handleChange={handleChange} />
+        <ProductInput
+          key={index}
+          input={input}
+          handleChange={handleChange}
+          value={productData[input.name]}
+        />
       ))}
 
       <Button>Yeni Ürün Ekle</Button>
