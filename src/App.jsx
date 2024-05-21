@@ -4,9 +4,15 @@ import Button from "./components/UI/Button";
 function App() {
   return (
     <div className="app">
-     <Button type="primary" size="xl" />
-     <Button type="success" size="lg" />
-     <Button type="danger" size="sm" />
+      <Button type="primary" size="xl">
+        Ekle
+      </Button>
+      <Button type="success" size="lg">
+        Güncelle
+      </Button>
+      <Button type="danger" size="sm">
+        <strong>Delete</strong>
+      </Button>
       {/* <Products /> */}
     </div>
   );
