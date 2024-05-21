@@ -1,5 +1,6 @@
-.products{
-    padding: 10px;
-    display: flex;
-    gap: 10px;
+.products {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  color: #fff;
 }

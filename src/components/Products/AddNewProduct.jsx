@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import ProductInput from "./ProductInput";
 import "./AddNewProduct.css";
+import Modal from "../UI/Modal";
 
 const productInputs = [
   {
@@ -40,6 +41,7 @@ const initialValues = {
 
 function AddNewProduct(props) {
   const [productData, setProductData] = useState(initialValues);
+  const [isShowModal, setIsShowModal] = useState(false);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -54,7 +56,7 @@ function AddNewProduct(props) {
     );
 
     if (!isFormValid) {
-      console.error("Inputlar boş olamaz!");
+      setIsShowModal(true);
       return;
     }
     const newProduct = {
@@ -71,6 +73,12 @@ function AddNewProduct(props) {
 
   return (
     <form className="product-form" onSubmit={handleSubmit}>
+      <Modal
+        title={"Form Hatası!"}
+        description={"Inputlar boş geçilemez!"}
+        isShowModal={isShowModal}
+        setIsShowModal={setIsShowModal}
+      />
       {productInputs.map((input, index) => (
         <ProductInput
           key={index}
