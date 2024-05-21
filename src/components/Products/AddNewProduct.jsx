@@ -1,7 +1,8 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import Button from "../UI/Button";
-import "./AddNewProduct.css";
 import ProductInput from "./ProductInput";
+import "./AddNewProduct.css";
 
 const productInputs = [
   {
@@ -30,7 +31,7 @@ const productInputs = [
   },
 ];
 
-function AddNewProduct() {
+function AddNewProduct(props) {
   const [productData, setProductData] = useState({
     title: "",
     image: "",
@@ -43,10 +44,19 @@ function AddNewProduct() {
     setProductData((prevState) => ({ ...prevState, [name]: value }));
   }
 
-  console.log(productData);
+  function handleSubmit(event) {
+    event.preventDefault();
+    const newProduct = {
+      id: Math.random(),
+      ...productData,
+      price: Number(productData.price),
+    };
+    
+    props.setProducts((products) => [newProduct, ...products]);
+  }
 
   return (
-    <form className="product-form">
+    <form className="product-form" onSubmit={handleSubmit}>
       {productInputs.map((input, index) => (
         <ProductInput key={index} input={input} handleChange={handleChange} />
       ))}
@@ -55,5 +65,9 @@ function AddNewProduct() {
     </form>
   );
 }
+
+AddNewProduct.propTypes = {
+  setProducts: PropTypes.func,
+};
 
 export default AddNewProduct;
