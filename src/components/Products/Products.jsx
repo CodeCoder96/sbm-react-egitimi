@@ -1,9 +1,8 @@
-import ProductItem from "./ProductItem";
-import "./Products.css";
-import AddNewProduct from "./AddNewProduct";
 import { useEffect, useState } from "react";
-import Button from "../UI/Button";
+import ProductItem from "./ProductItem";
+// import AddNewProduct from "./AddNewProduct";
 import Spinner from "../UI/Spinner";
+import "./Products.css";
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -36,17 +35,12 @@ function Products() {
   useEffect(() => {
     setTimeout(() => {
       fetchProducts();
-    }, 5000);
+    }, 1000);
   }, []);
 
   return (
     <div className="products-wrapper">
-      <AddNewProduct setProducts={setProducts} />
-      <Button onClick={fetchProducts} type="success" className="mt-3">
-        Fetch Products
-      </Button>
-      <br />
-      <br />
+      {/* <AddNewProduct setProducts={setProducts} /> */}
       {isLoading && <Spinner />}
       <div className="products">
         {products.map((product) => (
