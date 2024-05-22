@@ -1,4 +1,6 @@
-const Header = () => {
+import PropTypes from "prop-types";
+
+const Header = ({ cartItems }) => {
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -6,10 +8,7 @@ const Header = () => {
           <a className="navbar-brand" href="#">
             Navbar
           </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-          >
+          <button className="navbar-toggler" type="button">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse">
@@ -57,13 +56,17 @@ const Header = () => {
             </ul>
             <div className="d-flex align-items-center">
               <i className="bi bi-bag"></i>
-              <span className="badge bg-danger ">{"0"}</span>
+              <span className="badge bg-danger ">{cartItems.length}</span>
             </div>
           </div>
         </div>
       </nav>
     </header>
   );
+};
+
+Header.propTypes = {
+  cartItems: PropTypes.array,
 };
 
 export default Header;

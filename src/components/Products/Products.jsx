@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import ProductItem from "./ProductItem";
 // import AddNewProduct from "./AddNewProduct";
 import Spinner from "../UI/Spinner";
 import "./Products.css";
 
-function Products() {
+function Products({ setCartItems }) {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  console.log("products component çalıştı!");
 
   function handleDeleteProduct(productId) {
     const filteredProducts = products.filter(
@@ -48,11 +51,16 @@ function Products() {
             key={product.id}
             product={product}
             handleDeleteProduct={handleDeleteProduct}
+            setCartItems={setCartItems}
           />
         ))}
       </div>
     </div>
   );
 }
+
+Products.propTypes = {
+  setCartItems: PropTypes.func,
+};
 
 export default Products;

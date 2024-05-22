@@ -3,8 +3,12 @@ import Button from "../UI/Button";
 import "./ProductItem.css";
 
 function ProductItem(props) {
-  const { product, handleDeleteProduct } = props;
+  const { product, handleDeleteProduct, setCartItems } = props;
   const { id, image, title, description, price } = product;
+
+  function addToCart() {
+    setCartItems((cartItems) => [product, ...cartItems]);
+  }
 
   return (
     <div className="product-item">
@@ -15,6 +19,9 @@ function ProductItem(props) {
         <strong>{title.slice(0, 15)}...</strong>
         <p>{description.slice(0, 60)}...</p>
         <span>{price}₺</span>
+        <Button className={"mb-2"} onClick={addToCart}>
+          Add To Cart
+        </Button>
         <Button type="danger" onClick={() => handleDeleteProduct(id)}>
           Delete
         </Button>
@@ -32,6 +39,7 @@ ProductItem.propTypes = {
     description: PropTypes.string.isRequired,
   }),
   handleDeleteProduct: PropTypes.func,
+  setCartItems: PropTypes.func,
 };
 
 export default ProductItem;
