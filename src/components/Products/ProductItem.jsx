@@ -15,8 +15,8 @@ function ProductItem(props) {
         <img src={image} width={200} alt="product image" />
       </div>
       <div className="product-info">
-        <strong>{title.slice(0, 15)}...</strong>
-        <p>{description.slice(0, 60)}...</p>
+        <strong className="product-title">{title}</strong>
+        <p className="product-description">{description}</p>
         <span>{price}₺</span>
         <Button className={"mb-2"} onClick={() => addToCart(product)}>
           Add To Cart

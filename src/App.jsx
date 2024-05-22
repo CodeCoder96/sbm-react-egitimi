@@ -4,12 +4,14 @@ import ProductsPage from "./pages/ProductsPage";
 import AboutPage from "./pages/AboutPage";
 import CartPage from "./pages/CartPage";
 import MainLayout from "./layouts/MainLayout";
+import ErrorPage from "./pages/404Page";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout />,
+      errorElement: <ErrorPage />,
       children: [
         {
           path: "/",
@@ -33,7 +35,7 @@ function App() {
 
   return (
     <div className="app container position-relative">
-        <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </div>
   );
 }
