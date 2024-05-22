@@ -1,11 +1,11 @@
 import ProductItem from "./ProductItem";
-import { productsData } from "../../productsData";
 import "./Products.css";
 import AddNewProduct from "./AddNewProduct";
 import { useState } from "react";
+import Button from "../UI/Button";
 
 function Products() {
-  const [products, setProducts] = useState(productsData);
+  const [products, setProducts] = useState([]);
 
   function handleDeleteProduct(productId) {
     const filteredProducts = products.filter(
@@ -14,9 +14,18 @@ function Products() {
     setProducts(filteredProducts);
   }
 
+  function fetchProducts() {
+    fetch("https://fakestoreapi.com/products")
+      .then((response) => response.json())
+      .then((data) => setProducts(data));
+  }
+
   return (
     <div className="products-wrapper">
       <AddNewProduct setProducts={setProducts} />
+      <Button onClick={fetchProducts} type="success" className="mt-3">
+        Fetch Products
+      </Button>
       <div className="products">
         {products.map((product) => (
           <ProductItem
