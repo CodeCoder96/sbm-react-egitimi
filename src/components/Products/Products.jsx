@@ -7,6 +7,13 @@ import { useState } from "react";
 function Products() {
   const [products, setProducts] = useState(productsData);
 
+  function handleDeleteProduct(productId) {
+    const filteredProducts = products.filter(
+      (product) => product.id !== productId
+    );
+    setProducts(filteredProducts);
+  }
+
   return (
     <div className="products-wrapper">
       <AddNewProduct setProducts={setProducts} />
@@ -14,10 +21,8 @@ function Products() {
         {products.map((product) => (
           <ProductItem
             key={product.id}
-            image={product.image}
-            price={product.price}
-            desc={product.description}
-            title={product.title}
+            product={product}
+            handleDeleteProduct={handleDeleteProduct}
           />
         ))}
       </div>

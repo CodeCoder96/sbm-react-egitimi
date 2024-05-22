@@ -1,15 +1,10 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import "./ProductItem.css";
 
 function ProductItem(props) {
-  const { image, title: productTitle, desc, price } = props;
-  const [title, setTitle] = useState(productTitle);
-
-  function handleTitleChange() {
-    setTitle("Title");
-  }
+  const { product, handleDeleteProduct } = props;
+  const { id, image, title, description, price } = product;
 
   return (
     <div className="product-item">
@@ -18,19 +13,25 @@ function ProductItem(props) {
       </div>
       <div className="product-info">
         <strong>{title.slice(0, 15)}...</strong>
-        <p>{desc.slice(0, 75)}...</p>
+        <p>{description.slice(0, 75)}...</p>
         <span>{price}₺</span>
-        <Button onClick={handleTitleChange}>Change Title</Button>
+        <Button type="danger" onClick={() => handleDeleteProduct(id)}>
+          Delete
+        </Button>
       </div>
     </div>
   );
 }
 
 ProductItem.propTypes = {
-  image: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  desc: PropTypes.string.isRequired,
+  product: PropTypes.shape({
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired,
+  }),
+  handleDeleteProduct: PropTypes.func,
 };
 
 export default ProductItem;
