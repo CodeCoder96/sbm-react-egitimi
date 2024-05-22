@@ -7,11 +7,7 @@ import { CartContext } from "../../context/CartContext";
 function ProductItem(props) {
   const { product, handleDeleteProduct } = props;
   const { id, image, title, description, price } = product;
-  const { setCartItems } = useContext(CartContext);
-
-  function addToCart() {
-    setCartItems((cartItems) => [product, ...cartItems]);
-  }
+  const { addToCart } = useContext(CartContext);
 
   return (
     <div className="product-item">
@@ -22,7 +18,7 @@ function ProductItem(props) {
         <strong>{title.slice(0, 15)}...</strong>
         <p>{description.slice(0, 60)}...</p>
         <span>{price}₺</span>
-        <Button className={"mb-2"} onClick={addToCart}>
+        <Button className={"mb-2"} onClick={() => addToCart(product)}>
           Add To Cart
         </Button>
         <Button type="danger" onClick={() => handleDeleteProduct(id)}>

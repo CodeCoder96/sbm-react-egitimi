@@ -3,9 +3,9 @@ import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
-  
+
   return (
-    <header>
+    <header className="position-fixed w-100 start-0 top-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">

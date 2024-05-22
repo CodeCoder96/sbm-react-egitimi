@@ -1,13 +1,12 @@
-import { useState } from "react";
 import Header from "./components/Layout/Header";
 import Products from "./components/Products/Products";
 
 function App() {
 
   return (
-    <div className="app container">
+    <div className="app container position-relative">
       <Header />
-      <main className=" py-4">
+      <main className="pt-5">
         <Products  />
       </main>
     </div>
