@@ -1,7 +1,7 @@
 import ProductItem from "./ProductItem";
 import "./Products.css";
 import AddNewProduct from "./AddNewProduct";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../UI/Button";
 
 function Products() {
@@ -22,11 +22,16 @@ function Products() {
       if (response.ok) {
         setProducts(data);
       }
-      
     } catch (error) {
       console.log(error);
     }
   }
+
+  // fetchProducts();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
 
   return (
     <div className="products-wrapper">
