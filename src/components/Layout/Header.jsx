@@ -58,7 +58,7 @@ const Header = () => {
               </li>
             </ul>
             <div className="d-flex align-items-center">
-              <i className="bi bi-bag"></i>
+              <i className="bi bi-bag text-dark"></i>
               <span className="badge bg-danger ">{cartItems.length}</span>
             </div>
           </div>
