@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
 
 const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
@@ -5,7 +6,7 @@ const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
     return null;
   }
 
-  return (
+  return createPortal(
     <div className="modal d-block">
       <div className="modal-dialog z-3">
         <div className="modal-content">
@@ -40,7 +41,8 @@ const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
         className="modal-overlay w-100 h-100 bg-primary position-absolute top-0 left-0 opacity-25 z-0"
         onClick={() => setIsShowModal(false)}
       ></div>
-    </div>
+    </div>,
+    document.getElementById("modal")
   );
 };
 
