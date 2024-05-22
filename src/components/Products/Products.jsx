@@ -3,9 +3,11 @@ import "./Products.css";
 import AddNewProduct from "./AddNewProduct";
 import { useEffect, useState } from "react";
 import Button from "../UI/Button";
+import Spinner from "../UI/Spinner";
 
 function Products() {
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   function handleDeleteProduct(productId) {
     const filteredProducts = products.filter(
@@ -15,6 +17,8 @@ function Products() {
   }
 
   async function fetchProducts() {
+    setProducts([]);
+    setIsLoading(true);
     try {
       const response = await fetch("https://fakestoreapi.com/products");
       const data = await response.json();
@@ -24,13 +28,15 @@ function Products() {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
-  // fetchProducts();
-
   useEffect(() => {
-    fetchProducts();
+    setTimeout(() => {
+      fetchProducts();
+    }, 5000);
   }, []);
 
   return (
@@ -39,6 +45,9 @@ function Products() {
       <Button onClick={fetchProducts} type="success" className="mt-3">
         Fetch Products
       </Button>
+      <br />
+      <br />
+      {isLoading && <Spinner />}
       <div className="products">
         {products.map((product) => (
           <ProductItem
