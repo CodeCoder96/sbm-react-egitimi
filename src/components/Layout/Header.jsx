@@ -1,9 +1,10 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const { cartItems } = useContext(CartContext);
+  const navigate = useNavigate();
 
   return (
     <header className="position-fixed w-100 start-0 top-0">
@@ -43,7 +44,10 @@ const Header = () => {
                 </NavLink>
               </li>
             </ul>
-            <div className="d-flex align-items-center">
+            <div
+              className="d-flex align-items-center"
+              onClick={() => navigate("/cart")}
+            >
               <i className="bi bi-bag text-dark"></i>
               <span className="badge bg-danger ">{cartItems.length}</span>
             </div>
