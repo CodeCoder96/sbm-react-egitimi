@@ -13,7 +13,7 @@ function ProductItem(props) {
       </div>
       <div className="product-info">
         <strong>{title.slice(0, 15)}...</strong>
-        <p>{description.slice(0, 75)}...</p>
+        <p>{description.slice(0, 60)}...</p>
         <span>{price}₺</span>
         <Button type="danger" onClick={() => handleDeleteProduct(id)}>
           Delete
