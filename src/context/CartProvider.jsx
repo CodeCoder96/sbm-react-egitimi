@@ -1,33 +1,51 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import PropTypes from "prop-types";
 import { CartContext } from "./CartContext";
 
+const initialState = {
+  cartItems: [],
+  totals: 0,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "ADD_TO_CART": {
+      const findProduct = state.cartItems.find(
+        (item) => item.id === action.product.id
+      );
+      if (findProduct) {
+        return {
+          ...state,
+          cartItems: state.cartItems.map((item) =>
+            item.id === findProduct.id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cartItems: [{ ...action.product, quantity: 1 }, ...state.cartItems],
+        };
+      }
+    }
+    default:
+      return state;
+  }
+}
+
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState([]);
+  // const [cartItems, setCartItems] = useState([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   function addToCart(product) {
-    const findProduct = cartItems.find((item) => item.id === product.id);
-    if (findProduct) {
-      setCartItems(
-        cartItems.map((item) => {
-          if (item.id === findProduct.id) {
-            return {
-              ...item,
-              quantity: item.quantity + 1,
-            };
-          }
-          return { ...item };
-        })
-      );
-    } else {
-      setCartItems((cartItems) => [{ ...product, quantity: 1 }, ...cartItems]);
-    }
+    dispatch({ type: "ADD_TO_CART", product });
   }
 
   return (
     <CartContext.Provider
       value={{
-        cartItems,
+        cartItems: state.cartItems,
         name: "Emin Başbayan",
         addToCart: addToCart,
       }}
