@@ -1,6 +1,9 @@
-import PropTypes from "prop-types";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
-const Header = ({ cartItems }) => {
+const Header = () => {
+  const { cartItems } = useContext(CartContext);
+  
   return (
     <header>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -63,10 +66,6 @@ const Header = ({ cartItems }) => {
       </nav>
     </header>
   );
-};
-
-Header.propTypes = {
-  cartItems: PropTypes.array,
 };
 
 export default Header;

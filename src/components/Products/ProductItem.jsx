@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
 import Button from "../UI/Button";
 import "./ProductItem.css";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 function ProductItem(props) {
-  const { product, handleDeleteProduct, setCartItems } = props;
+  const { product, handleDeleteProduct } = props;
   const { id, image, title, description, price } = product;
+  const { setCartItems } = useContext(CartContext);
 
   function addToCart() {
     setCartItems((cartItems) => [product, ...cartItems]);
@@ -39,7 +42,6 @@ ProductItem.propTypes = {
     description: PropTypes.string.isRequired,
   }),
   handleDeleteProduct: PropTypes.func,
-  setCartItems: PropTypes.func,
 };
 
 export default ProductItem;

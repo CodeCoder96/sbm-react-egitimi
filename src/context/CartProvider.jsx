@@ -3,10 +3,18 @@ import PropTypes from "prop-types";
 import { CartContext } from "./CartContext";
 
 const CartProvider = ({ children }) => {
-  const [cartItems, setCartItem] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   return (
-    <CartContext.Provider value={cartItems}>{children}</CartContext.Provider>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        name: "Emin Başbayan",
+        setCartItems: setCartItems
+      }}
+    >
+      {children}
+    </CartContext.Provider>
   );
 };
 
