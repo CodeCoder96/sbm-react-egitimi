@@ -1,9 +1,7 @@
-import Header from "../components/Layout/Header";
 
 const AboutPage = () => {
   return (
     <div className="about-page p-4">
-      <Header />
       <h1>AboutPage</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, voluptates
