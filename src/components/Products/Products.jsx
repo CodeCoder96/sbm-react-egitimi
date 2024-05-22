@@ -8,8 +8,6 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  console.log("products component çalıştı!");
-
   function handleDeleteProduct(productId) {
     const filteredProducts = products.filter(
       (product) => product.id !== productId

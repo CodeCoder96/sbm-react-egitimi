@@ -1,12 +1,14 @@
-import Products from "../components/Products/Products"
+import Header from "../components/Layout/Header";
+import Products from "../components/Products/Products";
 
 const ProductsPage = () => {
   return (
-    <div className='products-page p-4'>
-        <h1>Products Page</h1>
-        <Products />
+    <div className="products-page p-4">
+      <Header />
+      <h1>Products Page</h1>
+      <Products />
     </div>
-  )
-}
+  );
+};
 
-export default ProductsPage
+export default ProductsPage;
