@@ -73,12 +73,14 @@ function AddNewProduct(props) {
 
   return (
     <form className="product-form" onSubmit={handleSubmit}>
-      <Modal
-        title={"Form Hatası!"}
-        description={"Inputlar boş geçilemez!"}
-        isShowModal={isShowModal}
-        setIsShowModal={setIsShowModal}
-      />
+      {isShowModal && (
+        <Modal
+          title={"Form Hatası!"}
+          description={"Inputlar boş geçilemez!"}
+          isShowModal={isShowModal}
+          setIsShowModal={setIsShowModal}
+        />
+      )}
       {productInputs.map((input, index) => (
         <ProductInput
           key={index}

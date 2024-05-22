@@ -1,7 +1,18 @@
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
+  
+  useEffect(() => {
+    console.log("modal dom'a yüklendi!");
+
+    // clean-up function
+    return () => {
+      console.log("modal dom'dan kaldırıldı!");
+    };
+  }, []);
+
   if (!isShowModal) {
     return null;
   }
