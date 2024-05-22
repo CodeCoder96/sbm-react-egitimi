@@ -1,15 +1,23 @@
 import { createPortal } from "react-dom";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
-  
+  const [count, setCount] = useState(0);
+
   useEffect(() => {
+    let i = 0;
     console.log("modal dom'a yüklendi!");
+    const id = setInterval(() => {
+      i += 1;
+      console.log(i);
+      setCount(i);
+    }, 1000);
 
     // clean-up function
     return () => {
       console.log("modal dom'dan kaldırıldı!");
+      clearInterval(id);
     };
   }, []);
 
@@ -37,7 +45,8 @@ const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
               onClick={() => setIsShowModal(false)}
             >
               Close
-            </button>
+            </button>{" "}
+            {count}
             <button
               type="button"
               className="btn btn-primary"
