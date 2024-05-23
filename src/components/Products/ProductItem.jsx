@@ -16,7 +16,7 @@ function ProductItem(props) {
         <img src={image} width={200} alt="product image" />
       </div>
       <div className="product-info">
-        <Link className="product-title" to={"/product-details"}>
+        <Link className="product-title" to={`/products/${id}`}>
           {title}
         </Link>
         <p className="product-description">{description}</p>

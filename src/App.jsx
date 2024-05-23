@@ -31,7 +31,7 @@ function App() {
           element: <CartPage />,
         },
         {
-          path: "/product-details",
+          path: "/products/:productId",
           element: <ProductDetailsPage />
         }
       ],
