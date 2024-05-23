@@ -8,6 +8,8 @@ import ErrorPage from "./pages/404Page";
 import ProductDetailsPage from "./pages/products/ProductDetailsPage";
 import LoginPage from "./pages/auth/LoginPage";
 import AdminPage from "./pages/admin/AdminPage";
+import AdminLayout from "./layouts/AdminLayout";
+import CustomersPage from "./pages/admin/CustomersPage";
 
 function App() {
   const router = createBrowserRouter([
@@ -55,6 +57,21 @@ function App() {
         {
           path: "/admin",
           element: <AdminPage />
+        }
+      ],
+    },
+    {
+      path: "/admin",
+      element: <AdminLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <AdminPage />
+        },
+        {
+          path: "customers",
+          element: <CustomersPage />
         }
       ],
     },
