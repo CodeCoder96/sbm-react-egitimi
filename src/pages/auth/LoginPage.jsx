@@ -27,14 +27,14 @@ const LoginPage = () => {
         id: Math.random(),
         email: values.email,
         username: "eminbasbayan",
-        roles: ["user"],
+        role: "admin",
       };
 
       dispatch(loginUser({ user }));
       toast.success("Giriş başarılı! Ana sayfaya yönlendiriliyorsun.", {
         autoClose: 1500,
       });
-      
+
       setTimeout(() => {
         navigate("/");
       }, 2000);
