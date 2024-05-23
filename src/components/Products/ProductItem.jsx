@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../redux/cartSlice";
+import { addToCart, deleteFromCart } from "../../redux/cartSlice";
 import Button from "../UI/Button";
 import "./ProductItem.css";
 import { useDispatch } from "react-redux";
 
 export const ProductItem = (props) => {
-  const { product, handleDeleteProduct } = props;
+  const { product, handleDeleteProduct, cart } = props;
   const { id, image, title, description, price } = product;
   const dispatch = useDispatch();
 
@@ -21,13 +21,21 @@ export const ProductItem = (props) => {
         </Link>
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
+        {!cart && (
+          <Button
+            className={"mb-2"}
+            onClick={() => dispatch(addToCart(product))}
+          >
+            Add To Cart
+          </Button>
+        )}
+
         <Button
-          className={"mb-2"}
-          onClick={() => dispatch(addToCart(product))}
+          type="danger"
+          onClick={() =>                   
+            cart ? dispatch(deleteFromCart({id})) : handleDeleteProduct(id)
+          }
         >
-          Add To Cart
-        </Button>
-        <Button type="danger" onClick={() => handleDeleteProduct(id)}>
           Delete
         </Button>
       </div>
@@ -48,4 +56,5 @@ ProductItem.propTypes = {
     description: PropTypes.string.isRequired,
   }),
   handleDeleteProduct: PropTypes.func,
+  cart: PropTypes.bool,
 };
