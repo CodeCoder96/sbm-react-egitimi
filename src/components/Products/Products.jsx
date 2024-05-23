@@ -6,6 +6,7 @@ import "./Products.css";
 import useFetchData from "../../hooks/FethData";
 
 function Products() {
+  return;
   const [products, setProducts] = useState([]);
   const { data, isLoading, error } = useFetchData(
     "https://fakestoreapi.com/products"

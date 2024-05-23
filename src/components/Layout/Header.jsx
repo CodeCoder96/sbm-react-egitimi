@@ -3,6 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  return;
   const { cartItems } = useContext(CartContext);
   const navigate = useNavigate();
 

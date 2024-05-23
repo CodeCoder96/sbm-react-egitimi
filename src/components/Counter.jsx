@@ -1,25 +1,13 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 function Counter() {
-  const [count, setCount] = useState(0);
-
-  function arttir(params) {
-    console.log(params);
-    setCount(count + 1);
-  }
-
-  function azalt() {
-    if (count === 0) {
-      return;
-    }
-    setCount(count - 1);
-  }
+  const state = useSelector((state)=> state.counter);
 
   return (
     <div className="counter">
-      <button onClick={()=> arttir("+")}>+</button>
-      <strong>{count}</strong>
-      <button onClick={()=> azalt("-")}>-</button>
+      <button onClick={()=> {}}>+</button>
+      <strong>{state.count}</strong>
+      <button onClick={()=> {}}>-</button>
     </div>
   );
 }
