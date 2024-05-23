@@ -7,7 +7,7 @@ const Modal = ({ isShowModal = true, setIsShowModal, title, description }) => {
   }
 
   return createPortal(
-    <div className="modal d-block">
+    <div className="modal d-block text-danger">
       <div className="modal-dialog z-3">
         <div className="modal-content">
           <div className="modal-header">
