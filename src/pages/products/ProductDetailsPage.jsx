@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import SkeletonLoader from "../components/UI/SkeletonLoader";
+import SkeletonLoader from "../../components/UI/SkeletonLoader";
 
 const ProductDetailsPage = () => {
   const [product, setProduct] = useState(null);
