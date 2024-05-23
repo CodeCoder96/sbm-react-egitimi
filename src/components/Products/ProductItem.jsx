@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { addToCart, deleteFromCart } from "../../redux/cartSlice";
+import { addToCart, deleteFromCart } from "../../redux/slices/cartSlice";
 import Button from "../UI/Button";
 import "./ProductItem.css";
 import { useDispatch } from "react-redux";
@@ -32,8 +32,8 @@ export const ProductItem = (props) => {
 
         <Button
           type="danger"
-          onClick={() =>                   
-            cart ? dispatch(deleteFromCart({id})) : handleDeleteProduct(id)
+          onClick={() =>
+            cart ? dispatch(deleteFromCart({ id })) : handleDeleteProduct(id)
           }
         >
           Delete

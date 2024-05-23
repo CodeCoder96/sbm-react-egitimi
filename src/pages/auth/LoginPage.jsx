@@ -1,7 +1,14 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { loginUser } from "../../redux/slices/authSlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -16,7 +23,21 @@ const LoginPage = () => {
         .min(6, "Şifre en az 6 karakter olmalı!"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      const user = {
+        id: Math.random(),
+        email: values.email,
+        username: "eminbasbayan",
+        roles: ["user"],
+      };
+
+      dispatch(loginUser({ user }));
+      toast.success("Giriş başarılı! Ana sayfaya yönlendiriliyorsun.", {
+        autoClose: 1500,
+      });
+      
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     },
   });
   return (

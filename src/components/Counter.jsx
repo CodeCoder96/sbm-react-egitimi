@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { arttir, azalt } from "../redux/counterSlice";
+import { arttir, azalt } from "../redux/slices/counterSlice";
 
 function Counter() {
   const state = useSelector((state) => state.counter);

@@ -1,10 +1,13 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../redux/slices/authSlice";
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  console.log(cartItems);
+
   return (
     <header className="position-fixed w-100 start-0 top-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,6 +45,27 @@ const Header = () => {
                   Cart
                 </NavLink>
               </li>
+              {user ? (
+                <>
+                  <li className="nav-item">
+                    <strong className="text-info nav-link">
+                      Hoşgeldin {user.username}
+                    </strong>
+                  </li>
+                  <li
+                    className="nav-item"
+                    onClick={() => dispatch(logoutUser())}
+                  >
+                    <strong className="text-danger nav-link">Çıkış Yap!</strong>
+                  </li>
+                </>
+              ) : (
+                <li className="nav-item">
+                  <NavLink to="/login" className="nav-link">
+                    Login
+                  </NavLink>
+                </li>
+              )}
             </ul>
             <div
               className="d-flex align-items-center"
