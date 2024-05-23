@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ProductItem from "./ProductItem";
+import { ProductItem, NewItem } from "./ProductItem";
 // import AddNewProduct from "./AddNewProduct";
 import Spinner from "../UI/Spinner";
 import "./Products.css";
@@ -28,6 +28,7 @@ function Products() {
   return (
     <div className="products-wrapper">
       {/* <AddNewProduct setProducts={setProducts} /> */}
+      <NewItem />
       {isLoading && <Spinner />}
       {error && <div>Error loading data!</div>}
       <div className="products">

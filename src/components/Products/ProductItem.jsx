@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
-function ProductItem(props) {
+export const ProductItem = (props) => {
   const { product, handleDeleteProduct } = props;
   const { id, image, title, description, price } = product;
   const { addToCart } = useContext(CartContext);
@@ -32,6 +32,10 @@ function ProductItem(props) {
   );
 }
 
+export const NewItem = ()=>{
+  return <div>new item</div>
+}
+
 ProductItem.propTypes = {
   product: PropTypes.shape({
     image: PropTypes.string.isRequired,
@@ -43,4 +47,3 @@ ProductItem.propTypes = {
   handleDeleteProduct: PropTypes.func,
 };
 
-export default ProductItem;
