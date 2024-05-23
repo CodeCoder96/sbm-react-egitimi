@@ -1,14 +1,14 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { addToCart } from "../../redux/cartSlice";
 import Button from "../UI/Button";
 import "./ProductItem.css";
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 export const ProductItem = (props) => {
   const { product, handleDeleteProduct } = props;
   const { id, image, title, description, price } = product;
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
 
   return (
     <div className="product-item">
@@ -21,7 +21,10 @@ export const ProductItem = (props) => {
         </Link>
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
-        <Button className={"mb-2"} onClick={() => addToCart(product)}>
+        <Button
+          className={"mb-2"}
+          onClick={() => dispatch(addToCart(product))}
+        >
           Add To Cart
         </Button>
         <Button type="danger" onClick={() => handleDeleteProduct(id)}>
@@ -30,11 +33,11 @@ export const ProductItem = (props) => {
       </div>
     </div>
   );
-}
+};
 
-export const NewItem = ()=>{
-  return <div>new item</div>
-}
+export const NewItem = () => {
+  return <div>new item</div>;
+};
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
@@ -46,4 +49,3 @@ ProductItem.propTypes = {
   }),
   handleDeleteProduct: PropTypes.func,
 };
-

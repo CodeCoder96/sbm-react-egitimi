@@ -1,12 +1,10 @@
-import { useContext } from "react";
-import { CartContext } from "../../context/CartContext";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  return;
-  const { cartItems } = useContext(CartContext);
+  const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
-
+  console.log(cartItems);
   return (
     <header className="position-fixed w-100 start-0 top-0">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
