@@ -5,7 +5,7 @@ const MainLayout = () => {
   return (
     <div className="main-layout">
       <Header />
-      <main className="py-5">
+      <main>
         <Outlet />
       </main>
       <footer>Footer</footer>

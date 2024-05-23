@@ -1,7 +1,7 @@
 
 const CartPage = () => {
   return (
-    <div className="cart-page py-4">
+    <div className="cart-page">
     
       <h1>CartPage</h1>
     </div>

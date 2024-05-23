@@ -14,16 +14,17 @@
     padding: 6px;
 }
 
-.product-info strong {
-    font-size: 24px;
-}
-
+ 
 .product-title{
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .product-description {

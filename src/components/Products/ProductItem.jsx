@@ -3,6 +3,7 @@ import Button from "../UI/Button";
 import "./ProductItem.css";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 function ProductItem(props) {
   const { product, handleDeleteProduct } = props;
@@ -15,7 +16,9 @@ function ProductItem(props) {
         <img src={image} width={200} alt="product image" />
       </div>
       <div className="product-info">
-        <strong className="product-title">{title}</strong>
+        <Link className="product-title" to={"/product-details"}>
+          {title}
+        </Link>
         <p className="product-description">{description}</p>
         <span>{price}₺</span>
         <Button className={"mb-2"} onClick={() => addToCart(product)}>

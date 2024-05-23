@@ -1,7 +1,7 @@
 
 const AboutPage = () => {
   return (
-    <div className="about-page p-4">
+    <div className="about-page">
       <h1>AboutPage</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, voluptates

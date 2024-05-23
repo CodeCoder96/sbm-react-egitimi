@@ -39,7 +39,7 @@ function Products() {
   }, []);
 
   return (
-    <div className="products-wrapper pt-4">
+    <div className="products-wrapper">
       {/* <AddNewProduct setProducts={setProducts} /> */}
       {isLoading && <Spinner />}
       <div className="products">
