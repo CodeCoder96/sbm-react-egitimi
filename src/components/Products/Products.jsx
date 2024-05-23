@@ -4,8 +4,8 @@ import ProductItem from "./ProductItem";
 import Spinner from "../UI/Spinner";
 import "./Products.css";
 
-function Products() {
-  const [products, setProducts] = useState([]);
+function Products({productsData}) {
+  const [products, setProducts] = useState(productsData);
   const [isLoading, setIsLoading] = useState(true);
 
   function handleDeleteProduct(productId) {
@@ -15,33 +15,33 @@ function Products() {
     setProducts(filteredProducts);
   }
 
-  async function fetchProducts() {
-    setProducts([]);
-    setIsLoading(true);
-    try {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const data = await response.json();
+  // async function fetchProducts() {
+  //   setProducts([]);
+  //   setIsLoading(true);
+  //   try {
+  //     const response = await fetch("https://fakestoreapi.com/products");
+  //     const data = await response.json();
 
-      if (response.ok) {
-        setProducts(data);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  //     if (response.ok) {
+  //       setProducts(data);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }
 
-  useEffect(() => {
-    setTimeout(() => {
-      fetchProducts();
-    }, 1000);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     fetchProducts();
+  //   }, 1000);
+  // }, []);
 
   return (
     <div className="products-wrapper">
       {/* <AddNewProduct setProducts={setProducts} /> */}
-      {isLoading && <Spinner />}
+      {/* {isLoading && <Spinner />} */}
       <div className="products">
         {products.map((product) => (
           <ProductItem
